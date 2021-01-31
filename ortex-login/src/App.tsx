@@ -33,7 +33,7 @@ const App: React.FC = () => {
             <GlobalStyles />
             <Container component='main' className={classes.container}>
                 <LogIn resetPasswordModalState={onOpenModal}/>
-                <ResetPasswordModal open={modalOpen} setOpen={setModalOpen} />
+                <ResetPasswordModal open={modalOpen} setOpen={onOpenModal} />
             </Container>
         </MuiThemeProvider>
     )

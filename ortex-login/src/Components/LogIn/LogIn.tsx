@@ -41,9 +41,6 @@ const LogIn: React.FC<ILogInProps> = (props) => {
             row: {
                 textAlign: 'center',
             },
-            textInput: {
-                color: theme.palette.text.primary
-            },
             checkboxRow: {
                 textAlign: 'left',
             },
@@ -71,15 +68,14 @@ const LogIn: React.FC<ILogInProps> = (props) => {
                 <form className={classes.form}>
                     <Grid className={classes.row} item xs={12}>
                         <TextField
-                            className={classes.textInput}
                             variant="outlined"
                             margin="normal"
                             required
                             fullWidth
+                            type="email"
                             id="email"
                             label="Email Address"
                             name="email"
-                            autoComplete="email"
                             autoFocus
                         />
                     </Grid>
@@ -93,7 +89,6 @@ const LogIn: React.FC<ILogInProps> = (props) => {
                             label="Password"
                             type="password"
                             id="password"
-                            autoComplete="current-password"
                         />
                     </Grid>
                     <Grid className={classes.checkboxRow} item xs={12}>
