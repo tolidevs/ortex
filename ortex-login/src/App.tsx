@@ -8,11 +8,9 @@ import LogIn from './Components/LogIn/LogIn'
 import RateCard from './Components/RateCard/RateCard'
 import ResetPasswordModal from './Components/ResetPasswordModal/ResetPasswordModal';
 
-import getRate, { Rate } from './hooks/getRate'
-
 const App: React.FC = () => {
     const [modalOpen, setModalOpen] = useState<boolean>(false)
-    const [rate, setRate] = useState<Rate>()
+
 
     const onOpenModal = () => setModalOpen(!modalOpen)
 
@@ -30,8 +28,6 @@ const App: React.FC = () => {
     );
 
     const classes = useStyles()
-    
-    getRate().then(value => setRate(value))
 
     return (
         <MuiThemeProvider theme={theme}>
@@ -39,7 +35,7 @@ const App: React.FC = () => {
             <GlobalStyles />
             <Container component='main' className={classes.container}>
                 <LogIn resetPasswordModalState={onOpenModal}/>
-                <RateCard {...rate} />
+                <RateCard />
                 
                 <ResetPasswordModal open={modalOpen} setOpen={onOpenModal} />
             </Container>
