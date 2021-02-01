@@ -5,10 +5,14 @@ import { MuiThemeProvider, makeStyles, createStyles, Theme } from '@material-ui/
 import GlobalStyles from './theme/GlobalStyles'
 
 import LogIn from './Components/LogIn/LogIn'
+import RateCard from './Components/RateCard/RateCard'
 import ResetPasswordModal from './Components/ResetPasswordModal/ResetPasswordModal';
+
+import getRate, { Rate } from './hooks/getRate'
 
 const App: React.FC = () => {
     const [modalOpen, setModalOpen] = useState<boolean>(false)
+    const [rate, setRate] = useState<Rate>()
 
     const onOpenModal = () => setModalOpen(!modalOpen)
 
@@ -21,11 +25,13 @@ const App: React.FC = () => {
                 alignItems: 'center',
                 height: '100%',
                 width: '100%'
-            }
+            },
         }),
     );
 
     const classes = useStyles()
+    
+    getRate().then(value => setRate(value))
 
     return (
         <MuiThemeProvider theme={theme}>
@@ -33,10 +39,12 @@ const App: React.FC = () => {
             <GlobalStyles />
             <Container component='main' className={classes.container}>
                 <LogIn resetPasswordModalState={onOpenModal}/>
+                <RateCard {...rate} />
+                
                 <ResetPasswordModal open={modalOpen} setOpen={onOpenModal} />
             </Container>
         </MuiThemeProvider>
     )
 };
 
-export default App;
+export default React.memo(App);

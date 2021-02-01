@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Modal, Grid, Typography, TextField, Button, IconButton } from '@material-ui/core';
+import { Modal, Grid, TextField, Button, IconButton } from '@material-ui/core';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import CloseIcon from '@material-ui/icons/Close';
 
@@ -21,6 +21,9 @@ const ResetPasswordModal: React.FC<IResetPasswordModalProps> = (props) => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                [theme.breakpoints.down('sm')]: {
+                    padding: theme.spacing(2),
+                  }
             },
             modalContainer: {
                 border: '2px solid',
@@ -32,12 +35,19 @@ const ResetPasswordModal: React.FC<IResetPasswordModalProps> = (props) => {
                 padding: theme.spacing(4, 5),
                 borderRadius: '10px',
                 flexWrap: 'nowrap',
-                background: theme.palette.background.paper
+                background: theme.palette.background.paper,
+                [theme.breakpoints.down('sm')]: {
+                    width: '100%',
+                    padding: theme.spacing(3,2),
+                  }
             },
             modalBox: {
                 flexDirection: 'column',
                 width: '100%',
-                textAlign: 'center'
+                textAlign: 'center',
+                [theme.breakpoints.down('sm')]: {
+                    width: '100%'
+                }
             },
             form: {
                 width: '100%',
@@ -49,7 +59,8 @@ const ResetPasswordModal: React.FC<IResetPasswordModalProps> = (props) => {
             closeRow: {
                 width: '100%',
                 textAlign: 'right',
-                margin: '-16px'
+                margin: '-16px',
+                marginBottom: theme.spacing(1)
             },
             button: {
                 color: 'white',
@@ -70,17 +81,11 @@ const ResetPasswordModal: React.FC<IResetPasswordModalProps> = (props) => {
         >
             <Grid className={classes.modalContainer} container>
                 <Grid className={classes.closeRow} item>
-                <IconButton onClick={setOpen}>
+                    <IconButton onClick={setOpen}>
                         <CloseIcon />
                     </IconButton>
                 </Grid>
                 <Grid className={classes.modalBox} item>
-                    
-                    <Grid className={classes.row} item xs={12}>
-                        <Typography component="h1" variant="h5">
-                            Reset Password
-                        </Typography>
-                    </Grid>
                     <form className={classes.form}>
                         <Grid className='row' item xs={12}>
                             <TextField

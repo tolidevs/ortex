@@ -18,7 +18,10 @@ const LogIn: React.FC<ILogInProps> = (props) => {
             loginBox: {
                 flexDirection: 'column',
                 width: 'max-content',
-                textAlign: 'center'
+                textAlign: 'center',
+                [theme.breakpoints.down('sm')]: {
+                    width: '100%'
+                }
             },
             loginContainer: {
                 width: 'max-content',
@@ -28,7 +31,11 @@ const LogIn: React.FC<ILogInProps> = (props) => {
                 padding: theme.spacing(4, 5),
                 borderRadius: '10px',
                 flexWrap: 'nowrap',
-                background: theme.palette.background.paper
+                background: theme.palette.background.paper,
+                [theme.breakpoints.down('sm')]: {
+                    width: '100%',
+                    padding: theme.spacing(2, 1)
+                }
             },
             logo: {
                 maxWidth: '90%',
@@ -59,11 +66,6 @@ const LogIn: React.FC<ILogInProps> = (props) => {
             <Grid className={classes.loginBox} item>
                 <Grid className={classes.row} item xs={12}>
                     <img className={classes.logo} src={ortex_logo} alt='Ortex Logo' />
-                </Grid>
-                <Grid className={classes.row} item xs={12}>
-                    <Typography component="h1" variant="h5">
-                        Log in
-                    </Typography>
                 </Grid>
                 <form className={classes.form}>
                     <Grid className={classes.row} item xs={12}>

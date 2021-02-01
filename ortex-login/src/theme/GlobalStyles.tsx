@@ -18,6 +18,11 @@ const useStyles = makeStyles(() => createStyles({
             height: '100%',
             width: '100%'
         },
+        main: {
+            backgroundColor: '#202020',
+            height: '100%',
+            width: '100%'
+        },
         '#root': {
             height: '100%',
             width: '100%',
