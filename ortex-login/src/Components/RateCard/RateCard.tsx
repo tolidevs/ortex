@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Card, CardContent, Typography, Grid } from '@material-ui/core';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
@@ -9,11 +9,9 @@ import getRate, { Rate } from '../../hooks/getRate'
 const RateCard: React.FC = () => {
     const [rate, setRate] = useState<Rate>()
 
-    // const currRate = () => useCallback(() => {
+    useEffect(() => {
         getRate().then(value => setRate(value))
-    // }, [])
-    
-    // currRate()
+    }, [])
 
     const useStyles = makeStyles((theme: Theme) =>
         createStyles({
